@@ -1,0 +1,18 @@
+{
+  "channels": {
+    "wecom": {
+      "enabled": true,
+      "corpId": "wwxxxxxxxxxxxxxxxx",
+      "corpSecret": "your_corp_secret_here",
+      "agentId": 1000001,
+      "token": "your_token_here",
+      "encodingAESKey": "your_encoding_aes_key_here",
+      "webhookPath": "/wecom/events",
+      "webhookPort": 18789,
+      "dmPolicy": "pairing",
+      "groupPolicy": "allowlist",
+      "requireMention": true,
+      "mediaMaxMb": 30
+    }
+  }
+}
