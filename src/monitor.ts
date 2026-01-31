@@ -5,7 +5,6 @@ import {
   recordPendingHistoryEntryIfEnabled,
   clearHistoryEntriesIfEnabled,
   DEFAULT_GROUP_HISTORY_LIMIT,
-  type HistoryEntry,
 } from "openclaw/plugin-sdk";
 import { verifySignature, decryptMessage, generateRandomString } from "./crypto.js";
 import { resolveWecomCredentials } from "./accounts.js";

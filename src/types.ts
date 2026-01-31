@@ -57,4 +57,9 @@ export type WecomMessageEvent = {
   Title?: string;
   Description?: string;
   Url?: string;
+  Encrypt?: {
+    Content: string;
+    Nonce: string;
+    MsgSignature: string;
+  };
 };

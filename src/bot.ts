@@ -4,7 +4,7 @@ import type {
   WecomMessageContext,
   WecomMessageEvent,
 } from "./types.js";
-import { getFeishuRuntime as getWecomRuntime } from "./runtime.js";
+import { getWecomRuntime } from "./runtime.js";
 import { resolveWecomCredentials } from "./accounts.js";
 import {
   resolveWecomGroupConfig,

@@ -2,7 +2,7 @@ import type { ClawdbotConfig } from "openclaw/plugin-sdk";
 import type { WecomConfig, WecomMediaInfo } from "./types.js";
 import { getWecomRuntime } from "./runtime.js";
 import { uploadMedia, downloadMedia } from "./client.js";
-import { sendImageWecom, sendFileWecom } from "./send.js";
+import { sendImageWecom as sendUploadedImageWecom, sendFileWecom as sendUploadedFileWecom } from "./send.js";
 import fs from "fs";
 import path from "path";
 import { Readable } from "stream";
@@ -87,7 +87,8 @@ export async function sendImageWecom(params: {
       throw new Error(`Failed to fetch image from URL: ${response.status}`);
     }
     buffer = Buffer.from(await response.arrayBuffer());
-    name = fileName ?? path.basename(new URL(mediaUrl).pathname) || "image.jpg";
+    const urlPathname = new URL(mediaUrl).pathname;
+    name = fileName ?? (path.basename(urlPathname) || "image.jpg");
   } else {
     throw new Error("Either mediaUrl or mediaBuffer must be provided");
   }
@@ -99,7 +100,7 @@ export async function sendImageWecom(params: {
     fileName: name,
   });
 
-  return sendImageWecom({ cfg, to, imageKey: mediaId });
+  return sendUploadedImageWecom({ cfg, to, imageKey: mediaId });
 }
 
 export async function sendFileWecom(params: {
@@ -127,7 +128,8 @@ export async function sendFileWecom(params: {
       throw new Error(`Failed to fetch file from URL: ${response.status}`);
     }
     buffer = Buffer.from(await response.arrayBuffer());
-    name = fileName ?? path.basename(new URL(mediaUrl).pathname) || "file";
+    const urlPathname = new URL(mediaUrl).pathname;
+    name = fileName ?? (path.basename(urlPathname) || "file");
   } else {
     throw new Error("Either mediaUrl or mediaBuffer must be provided");
   }
@@ -141,7 +143,7 @@ export async function sendFileWecom(params: {
     fileName: name,
   });
 
-  return sendFileWecom({ cfg, to, fileKey: mediaId });
+  return sendUploadedFileWecom({ cfg, to, fileKey: mediaId });
 }
 
 function detectFileType(fileName: string): "image" | "voice" | "video" | "file" {

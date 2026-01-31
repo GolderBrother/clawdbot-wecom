@@ -1,6 +1,12 @@
 {
   "id": "wecom",
+  "name": "WeChat Work",
+  "description": "OpenClaw WeChat Work (企业微信) channel plugin",
+  "version": "1.0.0",
+  "type": "channel",
+  "main": "index.ts",
   "channels": ["wecom"],
+  "supportedChannels": ["wecom"],
   "configSchema": {
     "type": "object",
     "additionalProperties": false,

@@ -62,6 +62,60 @@ channels:
     mediaMaxMb: 30             # 媒体文件最大大小 (MB)
 ```
 
+## 使用
+
+### 启动插件
+
+```bash
+openclaw channels start wecom
+```
+
+### 发送消息
+
+发送文本消息：
+
+```typescript
+await sendMessageWecom({
+  cfg: yourConfig,
+  to: "userId",  // 用户 ID 或群组 ID
+  text: "Hello from AI bot!"
+});
+```
+
+发送图片：
+
+```typescript
+await sendImageWecom({
+  cfg: yourConfig,
+  to: "userId",
+  mediaUrl: "https://example.com/image.jpg",
+  fileName: "image.jpg"
+});
+```
+
+发送文件：
+
+```typescript
+await sendFileWecom({
+  cfg: yourConfig,
+  to: "userId",
+  mediaUrl: "https://example.com/document.pdf",
+  fileName: "document.pdf"
+});
+```
+
+### 停止插件
+
+```bash
+openclaw channels stop wecom
+```
+
+### 测试连接
+
+```bash
+openclaw channels test wecom
+```
+
 ## 主要限制
 
 - 不支持 WebSocket 长连接，仅支持 Webhook 回调
